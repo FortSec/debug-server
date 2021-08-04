@@ -5,7 +5,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return {
-        'response': 'success'
+        'response': 'success',
+        'data': 'edited'
     }
 
 
