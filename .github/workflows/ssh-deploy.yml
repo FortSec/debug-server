@@ -22,3 +22,11 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           TARGET: ${{ secrets.REMOTE_TARGET }}
           EXCLUDE: "/.gitignore"
+    - name: Restart Flask service
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: root
+        key: ${{ secrets.SERVER_ROOT_SSH_KEY }}
+        port: 22
+        script: systemctl restart debug_flask_server.service
